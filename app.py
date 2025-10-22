@@ -79,7 +79,7 @@ def index():
     
     conn.close()
     
-    return render_template_string("index.html", 
+    return render_template("index.html", 
                                  flashcard=flashcard, 
                                  total=total,
                                  categories=categories,
@@ -102,7 +102,7 @@ def add():
         
         return redirect(url_for('index'))
     
-    return render_template_string("add.html")
+    return render_template("add.html")
 
 @app.route('/manage')
 def manage():
@@ -112,7 +112,7 @@ def manage():
     flashcards = c.fetchall()
     conn.close()
     
-    return render_template_string("manage.html", flashcards=flashcards)
+    return render_template("manage.html", flashcards=flashcards)
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
@@ -138,7 +138,7 @@ def edit(id):
     if not flashcard:
         return redirect(url_for('manage'))
     
-    return render_template_string(edit.html, flashcard=flashcard)
+    return render_template("edit.html", flashcard=flashcard)
 
 @app.route('/delete/<int:id>', methods=['POST'])
 def delete(id):
