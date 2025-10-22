@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2 style="margin-bottom: 20px; color: #2d3748;">Add New Flashcard</h2>
+    <form method="POST">
+        <div>
+            <label>Question:</label>
+            <textarea name="question" required placeholder="Enter your question..."></textarea>
+        </div>
+        <div>
+            <label>Answer:</label>
+            <textarea name="answer" required placeholder="Enter the answer..."></textarea>
+        </div>
+        <div>
+            <label>Category (optional):</label>
+            <input type="text" name="category" placeholder="e.g., Math, History, Science">
+        </div>
+        <button type="submit" class="btn">Add Flashcard</button>
+    </form>
+</div>
+{% endblock %}

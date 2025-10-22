@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2 style="margin-bottom: 20px; color: #2d3748;">Manage Flashcards</h2>
+    {% if flashcards %}
+    <div class="flashcard-list">
+        {% for card in flashcards %}
+        <div class="flashcard-item">
+            {% if card.category %}
+            <div class="flashcard-category" style="position: static; display: inline-block; margin-bottom: 10px;">
+                {{ card.category }}
+            </div>
+            {% endif %}
+            <h3>{{ card.question }}</h3>
+            <p>{{ card.answer }}</p>
+            <div class="actions">
+                <a href="/edit/{{ card.id }}" class="btn">Edit</a>
+                <form method="POST" action="/delete/{{ card.id }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this card?');">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h2>No flashcards yet!</h2>
+        <p>Create your first flashcard to get started.</p>
+        <br>
+        <a href="/add" class="btn">Add Your First Card</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

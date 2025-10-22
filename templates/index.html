@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+    {% block content %}
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">{{ total }}</div>
+            <div class="stat-label">Total Cards</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ categories }}</div>
+            <div class="stat-label">Categories</div>
+        </div>
+    </div>
+
+    {% if flashcard %}
+    <div class="card">
+        <div class="flashcard" onclick="flipCard()">
+            {% if flashcard.category %}
+            <div class="flashcard-category">{{ flashcard.category }}</div>
+            {% endif %}
+            <div id="question" class="flashcard-question">
+                {{ flashcard.question }}
+            </div>
+            <div id="answer" class="flashcard-answer hidden">
+                {{ flashcard.answer }}
+            </div>
+            <div class="flip-hint">Click to flip</div>
+        </div>
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="location.href='/?id={{ prev_id }}'">← Previous</button>
+            <button class="btn" onclick="location.href='/?id={{ next_id }}'">Next →</button>
+            <button class="btn btn-secondary" onclick="location.href='/?random=1'">🎲 Random</button>
+        </div>
+    </div>
+    {% else %}
+    <div class="card">
+        <div class="empty-state">
+            <h2>No flashcards yet!</h2>
+            <p>Create your first flashcard to get started.</p>
+            <br>
+            <a href="/add" class="btn">Add Your First Card</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+    function flipCard() {
+        const question = document.getElementById('question');
+        const answer = document.getElementById('answer');
+        question.classList.toggle('hidden');
+        answer.classList.toggle('hidden');
+    }
+    </script>
+    {% endblock %}
