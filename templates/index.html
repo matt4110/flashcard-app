@@ -23,12 +23,12 @@
             <div id="answer" class="flashcard-answer hidden">
                 {{ flashcard.answer }}
             </div>
-            <div class="flip-hint">Click to flip</div>
+            <div class="flip-hint">Flip</div>
         </div>
         <div class="controls">
-            <button class="btn btn-secondary" onclick="location.href='/?id={{ prev_id }}'">← Previous</button>
-            <button class="btn" onclick="location.href='/?id={{ next_id }}'">Next →</button>
-            <button class="btn btn-secondary" onclick="location.href='/?random=1'">🎲 Random</button>
+            <button class="btn btn-secondary" onclick="location.href='/?id={{ prev_id }}'">< Previous</button>
+            <button class="btn btn-secondary" onclick="location.href='/?random=1'">Random</button>
+            <button class="btn" onclick="location.href='/?id={{ next_id }}'">Next ></button>
         </div>
     </div>
     {% else %}
